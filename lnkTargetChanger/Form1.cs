@@ -104,7 +104,7 @@ namespace lnkTargetChanger
 
             if (tabFiles.Length < 1)
             {
-                MessageBox.Show("Aucun fichier asc trouvé dans : " + comboBoxWorkingDirectory.Text);
+                MessageBox.Show("Aucun fichier .lnk trouvé dans : " + comboBoxWorkingDirectory.Text);
                 return;
             }
 
@@ -151,8 +151,20 @@ namespace lnkTargetChanger
             if (currentLink.Path.Contains(comboBoxTxt2Change.Text))
             {
                 // ici creer repertoire sauvegarde selon etat marqeur ou test existance
+                String sRepSauvegardeAncien = Path.Combine(comboBoxWorkingDirectory.Text, "sauveOldLNK");
+                String sRepSauvegardeNouveau = Path.Combine(comboBoxWorkingDirectory.Text, "sauveNewLNK");
+                String sNomFichier = Path.GetFileName(shortcutFullPath);
+                String sDirectoryPath = Path.GetDirectoryName(shortcutFullPath);
+
+                if (!Directory.Exists(sRepSauvegardeAncien))
+                    Directory.CreateDirectory(sRepSauvegardeAncien);
+
+                if (!Directory.Exists(sRepSauvegardeNouveau))
+                    Directory.CreateDirectory(sRepSauvegardeNouveau);
+
                 // sauvegarder le lnk
 
+                File.Copy(shortcutFullPath, sRepSauvegardeAncien + "\\" + sNomFichier,true);
                 //changer le repertoire de travail
                 currentLink.WorkingDirectory = currentLink.WorkingDirectory.Replace(comboBoxTxt2Change.Text, comboBoxNouveauPrefix.Text);
 
@@ -160,6 +172,7 @@ namespace lnkTargetChanger
                 currentLink.Path = currentLink.Path.Replace(comboBoxTxt2Change.Text, comboBoxNouveauPrefix.Text);
                 // Save the link to commit the changes.
                 currentLink.Save();
+                File.Copy(shortcutFullPath, sRepSauvegardeNouveau + "\\" + sNomFichier,true);
             }
 
             //fermer le liens ? 
@@ -169,6 +182,7 @@ namespace lnkTargetChanger
         {
             
                 FolderBrowserDialog fbd = new FolderBrowserDialog();
+                fbd.SelectedPath = this.comboBoxWorkingDirectory.Text;
 
                 DialogResult result = fbd.ShowDialog();
 
