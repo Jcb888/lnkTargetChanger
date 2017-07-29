@@ -18,7 +18,6 @@ namespace lnkTargetChanger
         // Les variables globals au formulaire
         string appDataArterris = "";//c'est dans ce repertoire qu'on a les droits et qu'il convient d'écrire
         string appdata = "";//son ss rep.
-        bool semaphore = false;
         static configObject co = new configObject();
 
         public Form1()
@@ -68,8 +67,7 @@ namespace lnkTargetChanger
             using (StreamReader rd = new StreamReader(appDataArterris + "\\configLNK.xml"))
             {
                 co = xs.Deserialize(rd) as configObject;
-
-               
+            
             }
 
             remplirCombo();
@@ -108,22 +106,39 @@ namespace lnkTargetChanger
                 return;
             }
 
-
-
-            for (int i = 0; i < tabFiles.Length; i++)
-            {
-                traiterFichierEnCours(tabFiles[i]);
-            }
-
-            try
-            {
-                System.Diagnostics.Process.Start("explorer.exe", comboBoxWorkingDirectory.Text);
-            }
-            catch (Exception e2)
+            if (checkBoxAffichageSeule.Checked == true)
             {
 
-                MessageBox.Show(e2.StackTrace);
+                FormAffichage fa = new FormAffichage();
+                fa.textBox1.Font = new Font(fa.textBox1.Font, FontStyle.Bold);
+                fa.textBox1.Text = "REPERTOIRE DE TRAVAIL: " + Path.GetDirectoryName(tabFiles[0]);
+                fa.textBox1.Font = new Font(fa.textBox1.Font, FontStyle.Regular);
+
+                for (int i = 0; i < tabFiles.Length; i++)
+                {
+                    traiterSimulationFichierEnCours(tabFiles[i], fa);
+                }
+                fa.Show();
             }
+            else
+            {
+                for (int i = 0; i < tabFiles.Length; i++)
+                {
+                    traiterFichierEnCours(tabFiles[i]);
+                }
+
+                try
+                {
+                    System.Diagnostics.Process.Start("explorer.exe", comboBoxWorkingDirectory.Text);
+                }
+                catch (Exception e2)
+                {
+
+                    MessageBox.Show(e2.StackTrace);
+                }
+            }
+
+            
         }
 
         private void traiterFichierEnCours(String fichierLNK)
@@ -134,6 +149,33 @@ namespace lnkTargetChanger
 
 
             
+        }
+
+        private void traiterSimulationFichierEnCours(String shortcutFullPath, FormAffichage fa)
+        {
+
+            // Load the shortcut.
+            Shell32.Shell shell = new Shell32.Shell();
+            Shell32.Folder folder = shell.NameSpace(Path.GetDirectoryName(shortcutFullPath));
+            Shell32.FolderItem folderItem = folder.Items().Item(Path.GetFileName(shortcutFullPath));
+            Shell32.ShellLinkObject currentLink = (Shell32.ShellLinkObject)folderItem.GetLink;
+
+           
+            
+
+            if (currentLink.Path.Contains(comboBoxTxt2Change.Text))
+            {
+
+                fa.textBox1.AppendText(Environment.NewLine);
+                fa.textBox1.AppendText(currentLink.Path);
+                             
+                currentLink.Save();
+               
+            }
+
+
+
+
         }
 
 
@@ -296,6 +338,8 @@ namespace lnkTargetChanger
             }
 
         }
+
+        
     }
 
 

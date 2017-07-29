@@ -39,6 +39,7 @@
             this.labelStr2Replace = new System.Windows.Forms.Label();
             this.labelNouveauPrefixPath = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.checkBoxAffichageSeule = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // comboBoxTxt2Change
@@ -129,17 +130,28 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 13);
+            this.label1.Location = new System.Drawing.Point(179, 233);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(173, 13);
+            this.label1.Size = new System.Drawing.Size(201, 13);
             this.label1.TabIndex = 15;
-            this.label1.Text = "[enter] pour valider nouvelle chaine";
+            this.label1.Text = "[enter] pour sauvegarder nouvelle chaine";
+            // 
+            // checkBoxAffichageSeule
+            // 
+            this.checkBoxAffichageSeule.AutoSize = true;
+            this.checkBoxAffichageSeule.Location = new System.Drawing.Point(228, 12);
+            this.checkBoxAffichageSeule.Name = "checkBoxAffichageSeule";
+            this.checkBoxAffichageSeule.Size = new System.Drawing.Size(152, 17);
+            this.checkBoxAffichageSeule.TabIndex = 16;
+            this.checkBoxAffichageSeule.Text = "Simulation avec  Affichage";
+            this.checkBoxAffichageSeule.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(392, 255);
+            this.Controls.Add(this.checkBoxAffichageSeule);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.labelNouveauPrefixPath);
             this.Controls.Add(this.labelStr2Replace);
@@ -170,6 +182,7 @@
         private System.Windows.Forms.Label labelStr2Replace;
         private System.Windows.Forms.Label labelNouveauPrefixPath;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox checkBoxAffichageSeule;
     }
 }
 
