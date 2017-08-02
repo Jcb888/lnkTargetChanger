@@ -13,6 +13,7 @@ using System.IO;
 
 namespace lnkTargetChanger
 {
+    
     public partial class Form1 : Form
     {
         // Les variables globals au formulaire
@@ -87,8 +88,6 @@ namespace lnkTargetChanger
         }
 
 
-       
-
         private void buttonExecuter_Click(object sender, EventArgs e)
         {
 
@@ -151,6 +150,8 @@ namespace lnkTargetChanger
             
         }
 
+
+        [STAThread]
         private void traiterSimulationFichierEnCours(String shortcutFullPath, FormAffichage fa)
         {
 
@@ -178,7 +179,7 @@ namespace lnkTargetChanger
 
         }
 
-
+        [STAThread]
         public void ChangeLinkTarget(string shortcutFullPath)
         {
             // ToDo verif combo pas vide si possible avant
