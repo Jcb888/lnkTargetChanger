@@ -40,6 +40,9 @@
             this.labelNouveauPrefixPath = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.checkBoxAffichageSeule = new System.Windows.Forms.CheckBox();
+            this.buttonSupStr2Replace = new System.Windows.Forms.Button();
+            this.buttonSupNouveauPrefix = new System.Windows.Forms.Button();
+            this.buttonDeleteRep2W = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboBoxTxt2Change
@@ -146,11 +149,44 @@
             this.checkBoxAffichageSeule.Text = "Simulation avec  Affichage";
             this.checkBoxAffichageSeule.UseVisualStyleBackColor = true;
             // 
+            // buttonSupStr2Replace
+            // 
+            this.buttonSupStr2Replace.Location = new System.Drawing.Point(351, 113);
+            this.buttonSupStr2Replace.Name = "buttonSupStr2Replace";
+            this.buttonSupStr2Replace.Size = new System.Drawing.Size(47, 21);
+            this.buttonSupStr2Replace.TabIndex = 17;
+            this.buttonSupStr2Replace.Text = "Delete";
+            this.buttonSupStr2Replace.UseVisualStyleBackColor = true;
+            this.buttonSupStr2Replace.Click += new System.EventHandler(this.buttonSupStr2Replace_Click);
+            // 
+            // buttonSupNouveauPrefix
+            // 
+            this.buttonSupNouveauPrefix.Location = new System.Drawing.Point(351, 164);
+            this.buttonSupNouveauPrefix.Name = "buttonSupNouveauPrefix";
+            this.buttonSupNouveauPrefix.Size = new System.Drawing.Size(47, 21);
+            this.buttonSupNouveauPrefix.TabIndex = 18;
+            this.buttonSupNouveauPrefix.Text = "Delete";
+            this.buttonSupNouveauPrefix.UseVisualStyleBackColor = true;
+            this.buttonSupNouveauPrefix.Click += new System.EventHandler(this.buttonSupNouveauPrefix_Click);
+            // 
+            // buttonDeleteRep2W
+            // 
+            this.buttonDeleteRep2W.Location = new System.Drawing.Point(381, 65);
+            this.buttonDeleteRep2W.Name = "buttonDeleteRep2W";
+            this.buttonDeleteRep2W.Size = new System.Drawing.Size(38, 23);
+            this.buttonDeleteRep2W.TabIndex = 19;
+            this.buttonDeleteRep2W.Text = "Del.";
+            this.buttonDeleteRep2W.UseVisualStyleBackColor = true;
+            this.buttonDeleteRep2W.Click += new System.EventHandler(this.buttonDeleteRep2W_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(392, 255);
+            this.ClientSize = new System.Drawing.Size(422, 255);
+            this.Controls.Add(this.buttonDeleteRep2W);
+            this.Controls.Add(this.buttonSupNouveauPrefix);
+            this.Controls.Add(this.buttonSupStr2Replace);
             this.Controls.Add(this.checkBoxAffichageSeule);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.labelNouveauPrefixPath);
@@ -183,6 +219,9 @@
         private System.Windows.Forms.Label labelNouveauPrefixPath;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox checkBoxAffichageSeule;
+        private System.Windows.Forms.Button buttonSupStr2Replace;
+        private System.Windows.Forms.Button buttonSupNouveauPrefix;
+        private System.Windows.Forms.Button buttonDeleteRep2W;
     }
 }
 

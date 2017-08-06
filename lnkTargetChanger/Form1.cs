@@ -271,6 +271,10 @@ namespace lnkTargetChanger
             bool b = co.ListPatternARechercher.Any(tr => tr.myValue.Equals(comboBoxTxt2Change.Text, StringComparison.CurrentCultureIgnoreCase));
             if (!b)
             {
+                //String str = comboBoxTxt2Change.Text;
+                //Char.ToUpper(str[0]);
+                //comboBoxTxt2Change.Text = str;
+
                 //KeyValuePair<string, string> kvp = new KeyValuePair<string, string>(((DicdepotDirectory.Count) + 1).ToString(), comboBoxDepot.Text);
                 comboItem ci = new comboItem(((co.ListPatternARechercher.Count) + 1).ToString(), comboBoxTxt2Change.Text);
                 co.ListPatternARechercher.Add(ci);
@@ -340,7 +344,35 @@ namespace lnkTargetChanger
 
         }
 
-        
+        private void buttonSupStr2Replace_Click(object sender, EventArgs e)
+        {
+            if(comboBoxTxt2Change.SelectedIndex != -1)
+            {
+                co.ListPatternARechercher.RemoveAll(x => x.myValue.Contains(this.comboBoxTxt2Change.Text));
+                comboBoxTxt2Change.Items.RemoveAt(comboBoxTxt2Change.SelectedIndex);
+            }
+            
+                
+        }
+
+        private void buttonSupNouveauPrefix_Click(object sender, EventArgs e)
+        {
+            if(comboBoxNouveauPrefix.SelectedIndex != -1)
+            {
+                co.listNouveauPrefix.RemoveAll(x => x.myValue.Contains(this.comboBoxNouveauPrefix.Text));
+                comboBoxNouveauPrefix.Items.RemoveAt(comboBoxNouveauPrefix.SelectedIndex);
+            }
+            
+        }
+
+        private void buttonDeleteRep2W_Click(object sender, EventArgs e)
+        {
+            if (comboBoxWorkingDirectory.SelectedIndex != -1)
+            {
+                co.ListRepertoire2Travail.RemoveAll(x => x.myValue.Contains(this.comboBoxWorkingDirectory.Text));
+                comboBoxWorkingDirectory.Items.RemoveAt(comboBoxWorkingDirectory.SelectedIndex);
+            }
+        }
     }
 
 
